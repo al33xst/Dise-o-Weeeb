@@ -1,0 +1,907 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Técnico Informático y Diseño Web</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+
+            /* TEXTURA DE FONDO */
+            background:
+                radial-gradient(circle at 20% 20%, rgba(0,255,255,0.12) 0 2px, transparent 3px),
+                radial-gradient(circle at 80% 70%, rgba(255,0,150,0.12) 0 2px, transparent 3px),
+                linear-gradient(135deg, #07142e, #101b45, #24104f);
+
+            background-size: 35px 35px, 45px 45px, cover;
+        }
+
+        /* ENCABEZADO */
+
+        header {
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+
+            background:
+                linear-gradient(rgba(5,15,45,0.78), rgba(31,8,69,0.88)),
+                url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            border-bottom: 5px solid #00eaff;
+        }
+
+        .hero {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin: 10px 0;
+            color: #ffffff;
+            text-shadow: 0 0 15px #00eaff;
+        }
+
+        .hero h2 {
+            color: #55f7ff;
+            font-size: 25px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+        }
+
+        .boton {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #00eaff, #8b5cff);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(0,234,255,0.5);
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 30px #00eaff;
+        }
+
+        /* MENÚ */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(7,20,46,0.95);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #8b5cff;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 18px;
+            padding: 10px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #55f7ff;
+            text-shadow: 0 0 10px #00eaff;
+        }
+
+        /* CONTENEDOR */
+
+        .contenedor {
+            width: 90%;
+            max-width: 1150px;
+            margin: 60px auto;
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .titulo h2 {
+            font-size: 38px;
+            color: #55f7ff;
+            text-shadow: 0 0 12px #00eaff;
+        }
+
+        .titulo p {
+            color: #d5dcff;
+            font-size: 17px;
+        }
+
+        /* TARJETAS DE SERVICIOS */
+
+        .servicios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tarjeta {
+            background: rgba(15,28,65,0.88);
+            border: 1px solid rgba(85,247,255,0.5);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+            transition: 0.4s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(0,234,255,0.35);
+        }
+
+        .tarjeta img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .tarjeta-contenido {
+            padding: 25px;
+        }
+
+        .tarjeta h3 {
+            color: #55f7ff;
+            font-size: 24px;
+        }
+
+        .tarjeta p,
+        .tarjeta li {
+            color: #e5e8ff;
+            line-height: 1.6;
+        }
+
+        .tarjeta ul {
+            padding-left: 20px;
+        }
+
+        /* BENEFICIOS */
+
+        .beneficios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .beneficio {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 18px;
+            background: linear-gradient(145deg, #151f50, #241252);
+            border: 1px solid #774cff;
+            transition: 0.3s;
+        }
+
+        .beneficio:hover {
+            transform: scale(1.04);
+            border-color: #55f7ff;
+        }
+
+        .beneficio .icono {
+            font-size: 45px;
+        }
+
+        .beneficio h3 {
+            color: #55f7ff;
+        }
+
+        /* PRECIOS */
+
+        .precios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .precio {
+            text-align: center;
+            background: rgba(14,29,65,0.95);
+            padding: 30px 20px;
+            border-radius: 20px;
+            border: 1px solid #00d9ff;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        .precio h3 {
+            color: #ffffff;
+        }
+
+        .cantidad {
+            font-size: 30px;
+            color: #55f7ff;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        /* GALERÍA */
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .galeria img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 18px;
+            border: 2px solid #774cff;
+            transition: 0.4s;
+        }
+
+        .galeria img:hover {
+            transform: scale(1.04);
+            border-color: #55f7ff;
+            box-shadow: 0 0 25px #00eaff;
+        }
+
+        /* FORMULARIO */
+
+        .contacto {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-contacto,
+        form {
+            background: rgba(15,28,65,0.9);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #774cff;
+        }
+
+        .info-contacto h3 {
+            color: #55f7ff;
+            font-size: 25px;
+        }
+
+        .dato {
+            margin: 22px 0;
+            font-size: 17px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: #55f7ff;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            border: 1px solid #5d5cff;
+            background: #080f2b;
+            color: white;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #55f7ff;
+            box-shadow: 0 0 10px rgba(85,247,255,0.4);
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .enviar {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(90deg, #00d9ff, #774cff);
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .enviar:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px #00eaff;
+        }
+
+        /* PIE */
+
+        footer {
+            margin-top: 70px;
+            padding: 35px 20px;
+            text-align: center;
+            background: #060d22;
+            border-top: 3px solid #00eaff;
+        }
+
+        footer h3 {
+            color: #55f7ff;
+        }
+
+        footer p {
+            color: #bfc8ed;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 700px) {
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            nav a {
+                margin: 5px;
+            }
+
+            .contacto {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+
+    <header>
+
+        <div class="hero">
+
+            <h1>💻 TECNOLOGÍA DIGITAL</h1>
+
+            <h2>Técnico Informático & Diseño Web</h2>
+
+            <p>
+                Soluciones tecnológicas modernas para computadoras,
+                páginas web y proyectos digitales.
+            </p>
+
+            <a href="#contacto" class="boton">
+                🚀 SOLICITAR INFORMACIÓN
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- MENÚ -->
+
+    <nav>
+
+        <a href="#inicio">INICIO</a>
+        <a href="#servicios">SERVICIOS</a>
+        <a href="#beneficios">BENEFICIOS</a>
+        <a href="#precios">PRECIOS</a>
+        <a href="#galeria">GALERÍA</a>
+        <a href="#contacto">CONTACTO</a>
+
+    </nav>
+
+
+    <!-- INTRODUCCIÓN -->
+
+    <section class="contenedor" id="inicio">
+
+        <div class="titulo">
+
+            <h2>🌐 Soluciones para tu mundo digital</h2>
+
+            <p>
+                Ofrecemos servicios tecnológicos pensados para
+                estudiantes, emprendedores, negocios y usuarios particulares.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICIOS -->
+
+    <section class="contenedor" id="servicios">
+
+        <div class="titulo">
+
+            <h2>🛠️ Nuestros Servicios</h2>
+
+            <p>
+                Conoce algunas de las soluciones que podemos ofrecer.
+            </p>
+
+        </div>
+
+
+        <div class="servicios">
+
+
+            <!-- TARJETA 1 -->
+
+            <div class="tarjeta">
+
+                <img
+                    src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=900&q=80"
+                    alt="Computadora">
+
+                <div class="tarjeta-contenido">
+
+                    <h3>💻 Soporte Informático</h3>
+
+                    <p>
+                        Ayuda para mantener tu computadora funcionando
+                        correctamente y mejorar su rendimiento.
+                    </p>
+
+                    <ul>
+                        <li>Reparación de computadoras</li>
+                        <li>Mantenimiento preventivo</li>
+                        <li>Instalación de programas</li>
+                        <li>Eliminación de malware</li>
+                        <li>Configuración de redes</li>
+                        <li>Actualización de hardware</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- TARJETA 2 -->
+
+            <div class="tarjeta">
+
+                <img
+                    src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=900&q=80"
+                    alt="Diseño web">
+
+                <div class="tarjeta-contenido">
+
+                    <h3>🌐 Diseño Web</h3>
+
+                    <p>
+                        Creación de sitios web modernos, atractivos
+                        y adaptados a diferentes dispositivos.
+                    </p>
+
+                    <ul>
+                        <li>Páginas para negocios</li>
+                        <li>Portafolios personales</li>
+                        <li>Landing pages</li>
+                        <li>Tiendas online</li>
+                        <li>Diseño adaptable</li>
+                        <li>Mantenimiento web</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- TARJETA 3 -->
+
+            <div class="tarjeta">
+
+                <img
+                    src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80"
+                    alt="Programación">
+
+                <div class="tarjeta-contenido">
+
+                    <h3>👨‍💻 Programación</h3>
+
+                    <p>
+                        Desarrollo de pequeños proyectos y soluciones
+                        digitales utilizando diferentes tecnologías.
+                    </p>
+
+                    <ul>
+                        <li>HTML y CSS</li>
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                        <li>Formularios web</li>
+                        <li>Interfaces digitales</li>
+                        <li>Proyectos educativos</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BENEFICIOS -->
+
+    <section class="contenedor" id="beneficios">
+
+        <div class="titulo">
+
+            <h2>⭐ ¿Por qué elegirnos?</h2>
+
+        </div>
+
+
+        <div class="beneficios">
+
+
+            <div class="beneficio">
+
+                <div class="icono">⚡</div>
+
+                <h3>Rapidez</h3>
+
+                <p>
+                    Atención rápida para resolver tus necesidades.
+                </p>
+
+            </div>
+
+
+            <div class="beneficio">
+
+                <div class="icono">💰</div>
+
+                <h3>Precios accesibles</h3>
+
+                <p>
+                    Opciones pensadas para diferentes presupuestos.
+                </p>
+
+            </div>
+
+
+            <div class="beneficio">
+
+                <div class="icono">🔒</div>
+
+                <h3>Seguridad</h3>
+
+                <p>
+                    Trabajamos buscando proteger tu información.
+                </p>
+
+            </div>
+
+
+            <div class="beneficio">
+
+                <div class="icono">🤝</div>
+
+                <h3>Atención personal</h3>
+
+                <p>
+                    Comunicación directa y personalizada.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRECIOS -->
+
+    <section class="contenedor" id="precios">
+
+        <div class="titulo">
+
+            <h2>💰 Precios de referencia</h2>
+
+            <p>
+                Los valores pueden cambiar dependiendo de la dificultad
+                y características de cada proyecto.
+            </p>
+
+        </div>
+
+
+        <div class="precios">
+
+
+            <div class="precio">
+
+                <h3>🔧 Mantenimiento PC</h3>
+
+                <div class="cantidad">$30</div>
+
+                <p>
+                    Limpieza y revisión básica del equipo.
+                </p>
+
+            </div>
+
+
+            <div class="precio">
+
+                <h3>🛡️ Optimización</h3>
+
+                <div class="cantidad">$40</div>
+
+                <p>
+                    Optimización y revisión de problemas.
+                </p>
+
+            </div>
+
+
+            <div class="precio">
+
+                <h3>🌐 Página Web</h3>
+
+                <div class="cantidad">$150</div>
+
+                <p>
+                    Página web básica de presentación.
+                </p>
+
+            </div>
+
+
+            <div class="precio">
+
+                <h3>🏢 Página Profesional</h3>
+
+                <div class="cantidad">$300</div>
+
+                <p>
+                    Sitio web con varias secciones.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALERÍA -->
+
+    <section class="contenedor" id="galeria">
+
+        <div class="titulo">
+
+            <h2>📸 Tecnología y Diseño</h2>
+
+            <p>
+                Imágenes relacionadas con nuestro trabajo.
+            </p>
+
+        </div>
+
+
+        <div class="galeria">
+
+            <img
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+                alt="Computadora portátil">
+
+            <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80"
+                alt="Programación">
+
+            <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80"
+                alt="Tecnología">
+
+            <img
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80"
+                alt="Tecnología digital">
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACTO -->
+
+    <section class="contenedor" id="contacto">
+
+        <div class="titulo">
+
+            <h2>📩 Contáctanos</h2>
+
+            <p>
+                Completa el formulario para solicitar información.
+            </p>
+
+        </div>
+
+
+        <div class="contacto">
+
+
+            <!-- INFORMACIÓN -->
+
+            <div class="info-contacto">
+
+                <h3>🚀 Hablemos de tu proyecto</h3>
+
+                <p>
+                    Si necesitas soporte informático o deseas crear
+                    una página web, puedes comunicarte con nosotros.
+                </p>
+
+
+                <div class="dato">
+                    📧 <strong>Email:</strong><br>
+                    tecnico@ejemplo.com
+                </div>
+
+
+                <div class="dato">
+                    📱 <strong>WhatsApp:</strong><br>
+                    +12 345 678 90
+                </div>
+
+
+                <div class="dato">
+                    🌎 <strong>Servicio:</strong><br>
+                    Local y remoto
+                </div>
+
+
+                <div class="dato">
+                    🕐 <strong>Horario:</strong><br>
+                    Lunes a viernes: 09:00 - 19:00
+                    <br>
+                    Sábados: 10:00 - 14:00
+                </div>
+
+            </div>
+
+
+            <!-- FORMULARIO -->
+
+            <form action="#" method="post">
+
+                <label for="nombre">
+                    Nombre completo
+                </label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Escribe tu nombre"
+                    required>
+
+
+                <label for="email">
+                    Correo electrónico
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="ejemplo@correo.com"
+                    required>
+
+
+                <label for="telefono">
+                    Teléfono
+                </label>
+
+                <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    placeholder="Tu número">
+
+
+                <label for="servicio">
+                    Servicio que necesitas
+                </label>
+
+                <select id="servicio" name="servicio">
+
+                    <option value="soporte">
+                        Soporte informático
+                    </option>
+
+                    <option value="web">
+                        Diseño de página web
+                    </option>
+
+                    <option value="programacion">
+                        Programación
+                    </option>
+
+                    <option value="otro">
+                        Otro servicio
+                    </option>
+
+                </select>
+
+
+                <label for="mensaje">
+                    Mensaje
+                </label>
+
+                <textarea
+                    id="mensaje"
+                    name="mensaje"
+                    rows="6"
+                    placeholder="Cuéntanos qué necesitas..."
+                    required></textarea>
+
+
+                <button type="submit" class="enviar">
+                    🚀 ENVIAR SOLICITUD
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer>
+
+        <h3>💻 TÉCNICO INFORMÁTICO & DISEÑO WEB</h3>
+
+        <p>
+            Soluciones digitales para un mundo conectado.
+        </p>
+
+        <p>
+            © 2026 Todos los derechos reservados.
+        </p>
+
+        <p>
+            Página creada con HTML y CSS.
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
+```
